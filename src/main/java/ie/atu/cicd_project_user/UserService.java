@@ -13,7 +13,8 @@ public class UserService {
         }
 
         public void createUser(User user){
-            System.out.println(user);
+
+            userRepository.save(user);
         }
 
         public List<User> getUser(){

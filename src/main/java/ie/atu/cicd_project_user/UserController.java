@@ -3,10 +3,7 @@ package ie.atu.cicd_project_user;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,12 +25,20 @@ public class UserController {
 
     }
 
-    @PostMapping("/getUser")
-    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/getUser")
     public ResponseEntity<Map<String, List<User>>> getUser(){
         List<User> userToSend= userService.getUser();
         Map<String, List<User>> response = new HashMap<>();
         response.put("user", userToSend);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
+
+//    @PostMapping("/getUser")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public ResponseEntity<Map<String, List<User>>> getUser(){
+//        List<User> userToSend= userService.getUser();
+//        Map<String, List<User>> response = new HashMap<>();
+//        response.put("user", userToSend);
+//        return new ResponseEntity<>(response,HttpStatus.OK);
+//    }
 }
