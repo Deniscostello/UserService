@@ -13,9 +13,11 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
+    private final RegistrationClient registrationClient;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, RegistrationClient registrationClient) {
         this.userService = userService;
+        this.registrationClient = registrationClient;
     }
 
     @PostMapping("/createUser")
@@ -32,6 +34,8 @@ public class UserController {
         response.put("user", userToSend);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
+
+
 
 //    @PostMapping("/getUser")
 //    @ResponseStatus(HttpStatus.CREATED)
